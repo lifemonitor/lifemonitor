@@ -1,4 +1,4 @@
-FROM node:17-alpine3.14
+FROM node:22-alpine
 
 RUN npm install --global smee-client
 
