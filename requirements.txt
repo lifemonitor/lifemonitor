@@ -47,7 +47,7 @@ PyGithub==1.55
 PyYAML~=6.0.1
 redis~=4.5.5
 repo2rocrate~=0.1.2
-requests~=2.31.0
+requests~=2.32.3
 rich~=13.8.0
 rocrate==0.10.0
 snakemake==6.13.1
