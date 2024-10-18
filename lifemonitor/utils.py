@@ -641,6 +641,7 @@ def download_file_from_remote_url(url, target_path: str = None,
             with tempfile.NamedTemporaryFile(delete=False) as tmp_file:
                 _download_from_remote(url, tmp_file, authorization=authorization)
                 target_path = tmp_file.path
+        logger.debug("Downloaded file: %r", target_path)
         return target_path
     except urllib.error.URLError as e:
         handle_download_exception(url, e)
