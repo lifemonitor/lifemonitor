@@ -283,7 +283,7 @@ class ROCrate(Resource):
             raise lm_exceptions.DownloadException(detail="RO-Crate unavailable", status=410)
 
         tmpdir_path = Path(target_path)
-        local_zip = download_url(self.local_path,
+        local_zip = download_url(self.uri,
                                  target_path=(tmpdir_path / 'rocrate.zip').as_posix())
         logger.debug("ZIP Archive: %s", local_zip)
         return (tmpdir_path / 'rocrate.zip').as_posix()
