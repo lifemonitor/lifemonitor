@@ -629,6 +629,8 @@ def workflows_delete_version(wf_uuid, wf_version):
 def workflows_delete(wf_uuid):
     try:
         w = lm.get_workflow(wf_uuid)
+        if not w:
+            raise lm_exceptions.EntityNotFoundException(models.Workflow, entity_id=wf_uuid)
         versions = [{'uuid': wf_uuid, 'version': w.version} for w in w.versions.values()]
         if current_user and not current_user.is_anonymous:
             lm.deregister_user_workflow(wf_uuid, current_user)
