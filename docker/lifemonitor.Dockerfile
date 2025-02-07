@@ -100,14 +100,20 @@ RUN find /lm/lifemonitor/ -type d -exec chmod a+r {} \;
 ##################################################################
 ## Node Stage
 ##################################################################
-FROM node:14.16.0-alpine3.12 AS node
+FROM node:18-alpine3.20 AS node
 
-
-RUN mkdir -p /static && apk add --no-cache bash python3 make g++ \
+# Update npm
+RUN npm -g install npm
+# Log node and npm versions
+RUN echo "Node version: $(node -v)" && echo "NPM version: $(npm -v)"
+# Create static folder
+RUN mkdir -p /static && apk add --no-cache bash python3 py3-setuptools make g++ \
     && addgroup -S lm && adduser -S lm -G lm \
     && chown -R lm:lm /static
 WORKDIR /static/src
+# Copy package.json
 COPY lifemonitor/static/src/package.json package.json
+# Install npm dependencies
 RUN npm install
 # Copy and build static files
 # Use a separated run to take advantage
