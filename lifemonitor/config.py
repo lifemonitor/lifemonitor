@@ -301,7 +301,7 @@ def configure_logging(app):
 
     log_format = f'[{COLOR_SEQ % (90)}%(asctime)s{RESET_SEQ}] %(levelname)s in %(module)s: {COLOR_SEQ % (90)}%(message)s{RESET_SEQ}'
     if level_value == logging.DEBUG:
-        log_format = f'[{COLOR_SEQ % (90)}%(asctime)s{RESET_SEQ}] %(levelname)s in %(module)s::%(funcName)s @ line: %(lineno)s: {COLOR_SEQ % (90)}%(message)s{RESET_SEQ}'
+        log_format = f'[{COLOR_SEQ % (90)}%(asctime)s{RESET_SEQ}] %(name)s %(levelname)s in %(module)s::%(funcName)s @ line: %(lineno)s: {COLOR_SEQ % (90)}%(message)s{RESET_SEQ}'
 
     # configure and initialize log_path
     log_file_path = app.config.get('LOG_FILE_PATH', '/var/log/lm')
