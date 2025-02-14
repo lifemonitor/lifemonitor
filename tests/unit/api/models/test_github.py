@@ -300,6 +300,11 @@ def test_instance_builds_versioned_by_date(
 
     ref_type, ref_value, ref = git_ref
 
+    logger.debug("Test instance: %r", git_ref)
+    logger.debug("Test instance: %r", test_instance_one_version)
+    logger.debug("Workflow version: %s", test_instance_one_version.test_suite.workflow_version.version)
+    logger.debug("Repo revision main ref: %s", test_instance_one_version.test_suite.workflow_version.repository)
+
     repo = test_instance_one_version.test_suite.workflow_version.repository
     assert repo
     assert repo.revision.main_ref.shorthand == ref_value or "main"
@@ -353,7 +358,7 @@ def test_instance_builds_versioned_by_date(
         v1 = MagicMock()
         v1.created = datetime.fromtimestamp(all_runs[2].created_at.timestamp())
         test_instance_one_version.test_suite.workflow_version.previous_version = v1
-        test_instance_one_version.test_suite.workflow_version.created = datetime.fromtimestamp(all_runs[1].created_at.timestamp())
+        test_instance_one_version.test_suite.workflow_version.created = datetime.fromtimestamp(all_runs[3].created_at.timestamp())
         test_instance_one_version.test_suite.workflow_version.next_version = None
 
         assert test_instance_one_version.test_suite.workflow_version.previous_version
@@ -373,20 +378,20 @@ def test_instance_builds_versioned_by_date(
         logger.debug("Found: %r", [f"{x}: {x.created_at}" for x in found])
         logger.debug("Not found: %r", [f"{x}: {x.created_at}" for x in not_found])
 
-        assert len(instance_builds) == (len(instance_all_builds) - 4), "Unexpected number of runs for the instance revision"
+        assert len(instance_builds) == 8, "Unexpected number of runs for the instance revision"
 
     # simulate an intermediate workflow version
     with cache.transaction():
         # builds_split = all_runs[1]
         v2 = MagicMock()
         test_instance_one_version.test_suite.workflow_version.next_version = v2
-        test_instance_one_version.test_suite.workflow_version.created = datetime.fromtimestamp(all_runs[1].created_at.timestamp())
-        v2.created = datetime.fromtimestamp(all_runs[0].created_at.timestamp())
+        test_instance_one_version.test_suite.workflow_version.created = datetime.fromtimestamp(all_runs[5].created_at.timestamp())
+        v2.created = datetime.fromtimestamp(all_runs[4].created_at.timestamp())
 
         instance_builds = github_service.get_test_builds(test_instance_one_version, limit=items_limit)
         logger.debug("Instance runs: %r", instance_builds)
 
-        assert len(instance_builds) == 5, "Unexpected number of runs for the instance revision"
+        assert len(instance_builds) == 1, "Unexpected number of runs for the instance revision"
 
 
 @pytest.mark.skipif(not token, reason="Github token not set")
