@@ -1,6 +1,6 @@
 Authlib~=0.15.6
 apscheduler==3.11
-boto3~=1.35.9
+boto3~=1.36.22 
 Bcrypt-Flask==1.0.2
 click-option-group~=0.5.5
 connexion[swagger-ui]~=2.14.2
