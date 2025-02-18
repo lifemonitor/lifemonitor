@@ -132,6 +132,10 @@ class BaseConfig:
     SESSION_COOKIE_NAME = 'lifemonitor_session'
     # Disable Maintenance Mode by default
     MAINTENANCE_MODE = False
+    # LOG_FILE_PATH
+    LOG_FILE_PATH = os.environ.get('LOG_FILE_PATH', '/var/log/lm')
+    # LOG_FILE_NAME
+    LOG_FILE_NAME = os.environ.get('LOG_FILE_NAME', 'lifemonitor.log')
 
 
 class DevelopmentConfig(BaseConfig):
@@ -307,7 +311,9 @@ def configure_logging(app):
     log_file_path = app.config.get('LOG_FILE_PATH', '/var/log/lm')
     if not os.path.exists(log_file_path):
         os.makedirs(log_file_path, exist_ok=True)
-
+    log_file_name = app.config.get('LOG_FILE_NAME', 'lifemonitor.log')
+    log_file = os.path.join(log_file_path, log_file_name)
+    logger.debug("Log file: %s", log_file)
     # configure logging
     dictConfig({
         'version': 1,
@@ -332,7 +338,7 @@ def configure_logging(app):
                 'level': logging.INFO,
                 'class': "logging.handlers.RotatingFileHandler",
                 'formatter': 'default',
-                "filename": os.path.join(log_file_path, 'lifemonitor.log'),
+                "filename": log_file,
                 "maxBytes": 10485760,
                 "backupCount": 10,
             },
