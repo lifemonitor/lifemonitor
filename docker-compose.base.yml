@@ -137,11 +137,14 @@ services:
       - "POSTGRESQL_PORT=5432"
       - "LIFEMONITOR_TLS_KEY=/certs/lm.key"
       - "LIFEMONITOR_TLS_CERT=/certs/lm.crt"
+      - "LOG_FILE_PATH=/var/log/lm"
+      - "LOG_FILE_NAME=lifemonitor-ws.log"
     volumes:
       - "./certs:/certs:ro"
       - "./instance:/lm/instance:ro"
       - "./settings.conf:/lm/settings.conf:ro" # default settings
       - "data_workflows:/var/data/lm"
+      - "/tmp/lifemonitor-logs:/var/log/lm"
     ports:
       - "8001:8000"
     networks:
@@ -165,6 +168,7 @@ volumes:
   data_specs:
   data_redis:
   data_workflows:
+  logs:
 
 
 networks:
