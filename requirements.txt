@@ -4,7 +4,7 @@ boto3~=1.36.22
 Bcrypt-Flask==1.0.2
 click-option-group~=0.5.5
 connexion[swagger-ui]~=2.14.2
-cryptography>=41.0.3
+cryptography>=44.0.1
 dnspython==2.6.1
 dramatiq[redis,watch]==1.14.2
 email-validator~=2.2.0
