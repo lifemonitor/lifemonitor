@@ -5,7 +5,7 @@ Bcrypt-Flask==1.0.2
 click-option-group~=0.5.5
 connexion[swagger-ui]~=2.14.2
 cryptography>=44.0.1
-dnspython==2.6.1
+dnspython==2.7.0
 dramatiq[redis,watch]==1.14.2
 email-validator~=2.2.0
 eventlet==0.36.1
