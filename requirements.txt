@@ -50,7 +50,7 @@ repo2rocrate~=0.1.2
 requests~=2.32.3
 rich~=13.9.4
 rocrate==0.13.0
-snakemake==6.13.1
+snakemake==7.32.4
 SQLAlchemy==1.4.41
 urllib3==1.26.19
 uwsgi==2.0.26
