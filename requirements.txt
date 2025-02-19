@@ -55,5 +55,5 @@ SQLAlchemy==1.4.41
 urllib3==1.26.19
 uwsgi==2.0.26
 watchdog==4.0.2
-wheel~=0.44.0
+wheel~=0.45.1
 Werkzeug~=2.2.3
