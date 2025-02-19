@@ -53,7 +53,7 @@ rocrate==0.13.0
 snakemake==7.32.4
 SQLAlchemy==1.4.41
 urllib3==1.26.19
-uwsgi==2.0.26
+uwsgi==2.0.28
 watchdog==4.0.2
 wheel~=0.45.1
 Werkzeug~=2.2.3
