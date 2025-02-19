@@ -112,11 +112,14 @@ services:
       - "POSTGRESQL_HOST=db"
       - "POSTGRESQL_PORT=5432"
       - "WEBSOCKET_SERVER=false"
+      - "LOG_FILE_PATH=/var/log/lm"
+      - "LOG_FILE_NAME=lifemonitor-worker.log"
     volumes:
       - "./certs:/certs:ro"
       - "./instance:/lm/instance:ro"
       - "./settings.conf:/lm/settings.conf:ro" # default settings
       - "data_workflows:/var/data/lm"
+      - "/tmp/lifemonitor-logs:/var/log/lm"
     networks:
       - life_monitor
 
