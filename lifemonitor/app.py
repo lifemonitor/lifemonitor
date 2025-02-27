@@ -176,6 +176,16 @@ def initialize_app(
     # check if the app is running in maintenance mode
     if app.config.get("MAINTENANCE_MODE", False):
         logger.warning("Application is running in maintenance mode")
+        # init Redis connection
+        redis.init(app)
+        # configure app DB
+        db.init_app(app)
+        # initialize Migration engine
+        Migrate(app, db)
+        # initialize cache
+        init_cache(app)
+        # register commands
+        commands.register_commands(app)
     else:
         # register error handlers
         errors_controller.register_api(app)
