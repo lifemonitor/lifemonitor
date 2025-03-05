@@ -65,7 +65,7 @@ spec:
           env:
           {{- include "lifemonitor.common-env" . | nindent 12 }}          
             {{- if  .Values.maintenanceMode.enabled }}
-            - name: FLASK_ENV
+            - name: LIFEMONITOR_ENV
               value: "maintenance"
             {{- end }}
           volumeMounts:

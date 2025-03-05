@@ -73,7 +73,7 @@ spec:
               value: {{ $queue.name }}
               {{ end }}
             {{- if  $.Values.maintenanceMode.enabled }}
-            - name: FLASK_ENV
+            - name: LIFEMONITOR_ENV
               value: "maintenance"
             {{- end }}
           ports:

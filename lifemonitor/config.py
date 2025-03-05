@@ -199,7 +199,7 @@ _config_by_name = {cfg.CONFIG_NAME: cfg for cfg in _EXPORT_CONFIGS}
 
 def get_config(settings=None):
     # set app env
-    app_env = os.environ.get("FLASK_ENV", "production")
+    app_env = os.environ.get("LIFEMONITOR_ENV", "production")
     if app_env != 'production':
         # Set the DEBUG_METRICS env var to also enable the
         # prometheus metrics exporter when running in development mode

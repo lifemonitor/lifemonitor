@@ -10,7 +10,7 @@ services:
     command: |
       -c "wait-for-postgres.sh && wait-for-redis.sh ./lm-admin db init && /usr/local/bin/lm_entrypoint.sh"
     environment:
-      - "FLASK_ENV=testingSupport"
+      - "LIFEMONITOR_ENV=testingSupport"
       - "HOME=/lm"
       # Normally, OAuthLib will raise an InsecureTransportError if you attempt to use OAuth2 over HTTP,
       # rather than HTTPS. Setting this environment variable will prevent this error from being raised.

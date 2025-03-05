@@ -19,8 +19,8 @@ wait-for-redis.sh
 
 # set DEBUG flag
 DEBUG="${DEBUG:-}"
-FLASK_ENV="${FLASK_ENV:-production}"
-if [[ -z "${DEBUG}" && "${FLASK_ENV}" == "development" ]]; then
+LIFEMONITOR_ENV="${LIFEMONITOR_ENV:-production}"
+if [[ -z "${DEBUG}" && "${LIFEMONITOR_ENV}" == "development" ]]; then
   DEBUG="${DEBUG:-1}"
 fi
 
@@ -47,7 +47,7 @@ if [[ -n "${VERBOSE:-}" ]]; then
   echo "Verbose Mode Enabled"
 fi
 
-if [[ ${FLASK_ENV} == "development" ]]; then
+if [[ ${LIFEMONITOR_ENV} == "development" ]]; then
   watch='--watch .'
   log "Worker watching source code directory"
 fi

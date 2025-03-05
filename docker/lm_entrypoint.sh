@@ -13,7 +13,7 @@ export GUNICORN_CONF="${GUNICORN_CONF:-/lm/gunicorn.conf.py}"
 wait-for-postgres.sh
 wait-for-redis.sh
 
-if [[ "${FLASK_ENV}" == "development" || "${FLASK_ENV}" == "testingSupport" ]]; then
+if [[ "${LIFEMONITOR_ENV}" == "development" || "${LIFEMONITOR_ENV}" == "testingSupport" ]]; then
   printf "Staring app in DEV mode (Flask built-in web server with auto reloading)"
   python "${HOME}/app.py"
 else

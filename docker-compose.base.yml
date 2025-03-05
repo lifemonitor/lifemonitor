@@ -54,7 +54,7 @@ services:
     user: "${USER_UID}:${USER_GID}"
     env_file: *env_file
     environment:
-      - "FLASK_ENV=production"
+      - "LIFEMONITOR_ENV=production"
       - "POSTGRESQL_HOST=db"
       - "POSTGRESQL_PORT=5432"
       - "WEBSOCKET_SERVER=false"
@@ -80,7 +80,7 @@ services:
       - "db"
     env_file: *env_file
     environment:
-      - "FLASK_ENV=production"
+      - "LIFEMONITOR_ENV=production"
       - "POSTGRESQL_HOST=db"
       - "POSTGRESQL_PORT=5432"
     volumes:
@@ -108,7 +108,7 @@ services:
     user: "${USER_UID}:${USER_GID}"
     env_file: *env_file
     environment:
-      - "FLASK_ENV=production"
+      - "LIFEMONITOR_ENV=production"
       - "POSTGRESQL_HOST=db"
       - "POSTGRESQL_PORT=5432"
       - "WEBSOCKET_SERVER=false"
@@ -134,7 +134,7 @@ services:
     user: "${USER_UID}:${USER_GID}"
     env_file: *env_file
     environment:
-      - "FLASK_ENV=production"
+      - "LIFEMONITOR_ENV=production"
       - "WEBSOCKET_SERVER=true"
       - "POSTGRESQL_HOST=db"
       - "POSTGRESQL_PORT=5432"

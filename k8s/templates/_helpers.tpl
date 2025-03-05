@@ -113,7 +113,7 @@ Define environment variables shared by some pods.
 {{- define "lifemonitor.common-env" -}}
 - name: HOME
   value: "/lm"
-- name: FLASK_ENV
+- name: LIFEMONITOR_ENV
   value: "{{ .Values.lifemonitor.environment }}"
 - name: POSTGRESQL_HOST
   value: {{ include "chart.fullname" . }}-postgresql
