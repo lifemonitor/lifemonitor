@@ -37,7 +37,7 @@ def start_app_server():
     context.load_cert_chain(
         os.environ.get("LIFEMONITOR_TLS_CERT", './certs/lm.crt'),
         os.environ.get("LIFEMONITOR_TLS_KEY", './certs/lm.key'))
-    application.run(host="0.0.0.0", port=8000, ssl_context=context)
+                    exclude_patterns=["/usr/*", "/etc/*", "/var/*"])
 
 
 if __name__ == '__main__':
