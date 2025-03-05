@@ -31,6 +31,6 @@ app.app_context().push()
 if app.config.get("MAINTENANCE_MODE", False):
     logger.warning("Application is in maintenance mode")
     app.run()
-else:
+elif app.config.get('WORKER', False):
     # initialise the message broker
     broker = app.broker
