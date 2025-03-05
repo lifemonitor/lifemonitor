@@ -56,4 +56,5 @@ urllib3==1.26.19
 uwsgi==2.0.28
 watchdog==6.0.0
 wheel~=0.45.1
-Werkzeug~=2.2.3
+# Werkzeug~=2.2.x
+git+https://github.com/pallets/werkzeug.git@2.2.x#egg=werkzeug
