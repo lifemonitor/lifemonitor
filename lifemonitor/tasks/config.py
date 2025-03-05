@@ -109,7 +109,7 @@ def init_task_queues(app, load_jobs: bool = True):
         logger.info("Running app in worker process")
 
     # load jobs
-    if load_jobs and app.config.get('ENV') not in ['testingSupport', 'testing']:
+    if load_jobs and app.config.get('LIFEMONITOR_ENV') not in ['testingSupport', 'testing']:
         init_task_jobs(app)
 
 

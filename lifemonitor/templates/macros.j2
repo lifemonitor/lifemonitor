@@ -2,7 +2,7 @@
 <div class="{{class}}" {% if style %}style="{{style}}"{% endif %}>
   <a {% if href %}href={{href}}{% endif %}>
     <img
-      {% if config.get('ENV') == 'production' %}
+      {% if config.get('LIFEMONITOR_ENV') == 'production' %}
       src="{{ url_for('static', filename='img/logo/lm/LifeMonitorLogo.png') }}"
       {% else %}
       src="{{ url_for('static', filename='img/logo/lm/LifeMonitorLogo-dev.png') }}"

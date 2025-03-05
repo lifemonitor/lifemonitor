@@ -10,7 +10,7 @@
   <div class="text-center align-middle h-100 my-auto">
     <div class="row h-100 my-auto align-items-center">
       <div class="col-3">
-        <img style="width: 8em;" {% if config.get('ENV')=='production' %}
+        <img style="width: 8em;" {% if config.get('LIFEMONITOR_ENV')=='production' %}
           src="{{ url_for('auth.static', filename='img/logo/lm/LifeMonitorLogo.png') }}" {% else %}
           src="{{ url_for('auth.static', filename='img/logo/lm/LifeMonitorLogo-dev.png') }}" {% endif %}
           alt="LifeMonitor Logo" class="" />

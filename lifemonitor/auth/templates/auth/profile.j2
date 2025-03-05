@@ -114,7 +114,7 @@
 
   {{ macros.render_warning(
       config.get("WARNING_MESSAGE", None),
-      classes="mt-5" if config.get('ENV') == 'production' else "")
+      classes="mt-5" if config.get('LIFEMONITOR_ENV') == 'production' else "")
   }}
 
   <div style="padding: 50px;">
