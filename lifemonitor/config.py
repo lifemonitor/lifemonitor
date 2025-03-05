@@ -367,7 +367,10 @@ def configure_logging(app):
         from werkzeug._internal import _log as werkzeug_log
         werkzeug_log("info", "Raising werkzeug logging level to ERROR")
         from werkzeug._internal import _logger as werkzeug_logger
-        werkzeug_logger.setLevel(logging.ERROR)
+        if level_value == logging.DEBUG:
+            werkzeug_logger.setLevel(level_value)
+        else:
+            werkzeug_logger.setLevel(logging.ERROR)
     except ImportError:
         app.logger.warning("Unable to access werkzeug logger to raise its logging level")
 
