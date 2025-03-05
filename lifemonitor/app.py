@@ -191,6 +191,8 @@ def initialize_app(
         # register commands
         commands.register_commands(app)
     else:
+        # log initialization start
+        logger.info("Initializing the application...")
         # register error handlers
         errors_controller.register_api(app)
         # init Redis connection
@@ -218,3 +220,5 @@ def initialize_app(
         commands.register_commands(app)
         # register the domain filter with Jinja
         app.jinja_env.filters["domain"] = get_domain
+        # log initialization end
+        logger.info("LifeMonitor App initialized!")
