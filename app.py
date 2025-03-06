@@ -39,7 +39,8 @@ def start_app_server():
         os.environ.get("LIFEMONITOR_TLS_KEY", './certs/lm.key'))
     application.run(host="0.0.0.0", port=8000, ssl_context=context,
                     extra_files=["lifemonitor/static/specs/lifemonitor.yaml", "lifemonitor/static/src/*"],
-                    exclude_patterns=["/usr/*", "/etc/*", "/var/*"])
+                    exclude_patterns=["/usr/*", "/etc/*", "/var/*"],
+                    use_reloader=os.environ.get("LIFEMONITOR_ENV", 'production') == 'development'),
 
 
 if __name__ == '__main__':
