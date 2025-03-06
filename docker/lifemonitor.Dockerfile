@@ -5,7 +5,7 @@ RUN apt-get update -q \
  && apt-get install -y --no-install-recommends \
         bash lftp curl rsync build-essential  \
         redis-tools git \
-        postgresql-client-11 default-jre \
+        postgresql-client default-jre \
  && apt-get clean -y && rm -rf /var/lib/apt/lists
 
 # Set the parametric USER ID
