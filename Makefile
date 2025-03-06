@@ -233,10 +233,12 @@ start-testing: compose-files aux_images ro_crates images reset_compose permissio
 				-f docker-compose.test.yml \
 				config)" > docker-compose.yml \
 	&& cp {,.test.}docker-compose.yml \
-	&& $(docker_compose) -f docker-compose.yml up -d db lmtests seek jenkins webserver worker ws_server ;\
-	$(docker_compose) -f ./docker-compose.yml \
-		exec -T lmtests /bin/bash -c "tests/wait-for-seek.sh 600"; \
-	printf "$(done)\n"
+	&& $(docker_compose) -f docker-compose.yml up -d db lmtests seek jenkins webserver worker ws_server \
+	&& $(docker_compose) -f ./docker-compose.yml \
+		exec -T lmtests /bin/bash -c "tests/wait-for-seek.sh 600" \
+	&& $(docker_compose) exec lmtests pytest tests/test_users.py::test_user1[RegistryType.SEEK] > /dev/null 2>&1 || echo "Testing environment initialized!" \
+	&& $(docker_compose) restart db lmtests \
+	&& printf "$(done)\n"
 
 start-maintenance: compose-files aux_images ro_crates images reset_compose permissions ## Start LifeMonitor in a Testing environment
 	@printf "\n$(bold)Starting testing services...$(reset)\n" ; \
