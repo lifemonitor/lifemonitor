@@ -166,7 +166,7 @@ class TestingConfig(BaseConfig):
     CONFIG_NAME = "testing"
     SETTINGS_FILE = "tests/settings.conf"
     SECRET_KEY = os.getenv("TEST_SECRET_KEY", BaseConfig.SECRET_KEY)
-    DEBUG = True
+    DEBUG = False
     TESTING = True
     LOG_LEVEL = "DEBUG"
     # SQLALCHEMY_DATABASE_URI = "sqlite:///{0}/app-test.db".format(basedir)

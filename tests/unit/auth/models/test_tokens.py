@@ -30,7 +30,6 @@ import pytest
 from lifemonitor.auth.oauth2.client.models import OAuth2Token, OAuthIdentity
 from lifemonitor.db import db
 
-logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger()
 
 
