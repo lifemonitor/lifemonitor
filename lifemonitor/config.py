@@ -179,7 +179,7 @@ class TestingConfig(BaseConfig):
 
 class TestingSupportConfig(TestingConfig):
     CONFIG_NAME = "testingSupport"
-    DEBUG = True
+    DEBUG = False
     TESTING = False
     LOG_LEVEL = "DEBUG"
     DATA_WORKFLOWS = f"{BaseConfig.BASE_TEMP_FOLDER}/lm_tests_data"
