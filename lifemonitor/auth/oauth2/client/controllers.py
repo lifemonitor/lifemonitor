@@ -200,12 +200,14 @@ class AuthorizatonHandler:
                     if session['sign_in']:
                         return redirect(url_for("auth.identity_not_found"))
                 except KeyError as e:
-                    logger.error(e)
+                    if logger.isEnabledFor(logging.DEBUG):
+                        logger.exception(e)
 
             try:
                 session.pop('sign_in', False)
             except KeyError as e:
-                logger.debug(e)
+                if logger.isEnabledFor(logging.DEBUG):
+                    logger.exception(e)
 
             # Now, figure out what to do with this token. There are 2x2 options:
             # user login state and token link state.
