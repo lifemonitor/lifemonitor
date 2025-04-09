@@ -1,11 +1,11 @@
-FROM golang:1.15.2-alpine3.12
+FROM golang:1.24.2-alpine
 
 # install git
 RUN apk update && apk upgrade && \
     apk add --no-cache bash git openssh
 
 # install minica
-RUN go get github.com/jsha/minica
+RUN go install github.com/jsha/minica@latest
 
 # Declare an unprivileged user
 ARG CA_USER=ca
