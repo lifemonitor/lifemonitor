@@ -121,6 +121,7 @@ certs:
 	  mv certs/cert.pem certs/lm.crt && \
 	  mv certs/key.pem certs/lm.key && \
 	  chmod 644 certs/*.{key,crt}; \
+	  cp -a "$$(pwd)/certs/" $$(pwd)/tests/config/registries/seek/certs ; \
 	  printf "\n$(done)\n"; \
 	else \
 	  echo "$(yellow)WARNING: Using existing certificates$(reset)" ; \
@@ -389,8 +390,7 @@ clean: ## Clean up the working environment (i.e., running services, network, vol
 			printf "$(yellow)WARNING: nothing to remove. 'docker-compose.yml' file not found!$(reset)\n" ; \
 	fi
 	@printf "\n$(bold)Removing certs...$(reset) " ; \
-	rm -rf certs
-	rm -rf utils/certs/data
+	rm -rf certs && rm -rf utils/certs/data && rm -rf tests/config/registries/seek/certs \
 	@printf "$(done)\n"
 	@printf "\n$(bold)Removing temp files...$(reset) " ; \
 	rm -rf {,.prod.,.dev.,.test.}docker-compose.yml
