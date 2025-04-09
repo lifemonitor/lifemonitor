@@ -1,4 +1,4 @@
-FROM python:rc-alpine
+FROM python:3.13-alpine
 
 # Install requirements
 COPY app.py requirements.txt /
