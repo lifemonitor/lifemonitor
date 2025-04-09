@@ -28,7 +28,6 @@ __redis__ = None
 
 
 def get_connection() -> Redis:
-    global __redis__
     return __redis__
 
 
