@@ -192,9 +192,9 @@ permissions: certs
 
 aux_images: tests/config/registries/seek/seek.Dockerfile certs
 	@printf "\n$(bold)Building auxiliary Docker images...$(reset)\n" ; \
-	docker build -f tests/config/registries/seek/seek.Dockerfile \
-	       -t crs4/lifemonitor-tests:seek \
-	       tests/config/registries/seek/ ; \
+	# docker build -f tests/config/registries/seek/seek.Dockerfile \
+	#        -t crs4/lifemonitor-tests:seek \
+	#        tests/config/registries/seek/ ; \
 	printf "$(done)\n"
 
 start: images compose-files prod reset_compose permissions ## Start LifeMonitor in a Production environment
